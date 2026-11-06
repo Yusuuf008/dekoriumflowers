@@ -17,7 +17,7 @@ export function AdminLogin() {
       const response = await fetch("/api/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: form.get("email"), password: form.get("password") }),
+        body: JSON.stringify({ password: form.get("password") }),
       });
       const data = await response.json();
       if (!response.ok) {
@@ -40,11 +40,10 @@ export function AdminLogin() {
           <div>
             <p className="admin-login-eyebrow">GÜVENLİ GİRİŞ</p>
             <h1 id="admin-login-title">Yönetim paneli</h1>
-            <p className="admin-login-copy">Mağazanızı yönetmek için hesabınızla giriş yapın.</p>
+            <p className="admin-login-copy">Yönetim alanına erişmek için şifrenizi girin.</p>
           </div>
         </div>
         <form onSubmit={submit}>
-          <label><span>E-posta adresi</span><input name="email" type="email" required autoComplete="username" placeholder="admin@dekoriumflowers.com" /></label>
           <label><span>Şifre</span><input name="password" type="password" required autoComplete="current-password" placeholder="Şifrenizi girin" /></label>
           {error && <p className="admin-login-error" role="alert">{error}</p>}
           <button type="submit" disabled={loading}><span>{loading ? "Giriş yapılıyor…" : "Giriş yap"}</span>{!loading && <ArrowRight />}</button>

@@ -15,13 +15,12 @@ export async function POST(request: Request) {
   }
   if (current && current.resetAt <= now) attempts.delete(clientId);
 
-  const { email, password } = await request.json();
-  const validEmail = process.env.ADMIN_EMAIL || "admin@dekoriumflowers.com";
+  const { password } = await request.json();
   const validPassword = process.env.ADMIN_PASSWORD || "admin123";
-  if (email !== validEmail || password !== validPassword) {
+  if (password !== validPassword) {
     const failure = attempts.get(clientId);
     attempts.set(clientId, { count: (failure?.count || 0) + 1, resetAt: failure?.resetAt || now + WINDOW_MS });
-    return NextResponse.json({ error: "E-posta veya şifre hatalı." }, { status: 401 });
+    return NextResponse.json({ error: "Şifre hatalı." }, { status: 401 });
   }
   attempts.delete(clientId);
   const response = NextResponse.json({ ok: true });
