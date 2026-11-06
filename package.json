@@ -1,0 +1,31 @@
+{
+  "name": "dekorium-flowers",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "env -u ELECTRON_RUN_AS_NODE -u VSCODE_ESM_ENTRYPOINT -u VSCODE_NODE_COMPILE_CACHE_KIND -u VSCODE_NODE_COMPILE_CACHE_ROOT NEXT_TELEMETRY_DISABLED=1 /opt/homebrew/opt/node@22/bin/node node_modules/next/dist/bin/next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "engines": {
+    "node": ">=20 <23"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.47.10",
+    "lucide-react": "^0.468.0",
+    "next": "^15.5.29",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sonner": "^1.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.3",
+    "@types/react-dom": "^19.0.2",
+    "eslint": "^9.17.0",
+    "eslint-config-next": "^15.5.29",
+    "typescript": "^5.7.2"
+  }
+}
